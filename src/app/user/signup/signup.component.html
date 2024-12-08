@@ -1,98 +1,41 @@
-<!-- <div class="mb-4 text-2xl font-semibold text-green-600">Sign up</div>
-<form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
-  
-  <!-- Full Name -->
-  <!-- <div class="mb-3">
-    <input
-      class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 placeholder-gray-500"
-      placeholder="Full Name"
-      formControlName="fullName"
-    />
-    <div class="text-red-500 text-sm mt-2" *ngIf="hasDisplayableError('fullName') && form.controls.fullName.hasError('required')">
-      Please enter your full name.
+<div class="w-full">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="flex flex-col  gap-5 w-full">
+    <div class="w-full mb-4 text-3xl font-bold text-[#3C4852] text-center">
+      {{ variant === 'login' ? 'Welcome back' : 'Crack your goal with World\'s top educators' }}
+      <p class="text-base font-semibold text-[#3C4852] w-full">Over <span class="text-[#08BD80]">10 crore</span>
+        learners trust
+        us for their preparation</p>
     </div>
-  </div> -->
 
-  <!-- Email -->
-  <!-- <div class="mb-3">
-    <input
-      class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 placeholder-gray-500"
-      placeholder="Email"
-      formControlName="email"
-    />
-    <div class="text-red-500 text-sm mt-2" *ngIf="hasDisplayableError('email')">
-      <div *ngIf="form.controls.email.hasError('required')">
-        Please enter your email address.
-      </div>
-      <div *ngIf="form.controls.email.hasError('email')">
-        Please enter a valid email address.
-      </div>
-    </div>
-  </div> -->
+    <!-- Name Input (only shown for Sign up) -->
+    <app-input *ngIf="variant === 'register'" id="name" label="Name" [formControl]="getFormControl('name')">
+    </app-input>
 
-  <!-- Password -->
-  <!-- <div class="mb-3">
-    <input
-      class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 placeholder-gray-500"
-      placeholder="Password"
-      formControlName="password"
-    />
-    <div class="text-red-500 text-sm mt-2" *ngIf="hasDisplayableError('password')">
-      <ng-container [ngSwitch]="form.controls.password.errors | firstKey">
-        <div *ngSwitchCase="'required'">Please enter your password.</div>
-        <div *ngSwitchCase="'minlength'">At least 6 characters required.</div>
-        <div *ngSwitchCase="'pattern'">One or more special character(s).</div>
-      </ng-container>
-    </div>
-  </div> -->
+    <!-- Email Input -->
+    <app-input id="email" label="Email" type="email" [formControl]="getFormControl('email')">
+    </app-input>
 
-  <!-- Confirm Password -->
-  <!-- <div class="mb-3">
-    <input
-      class="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 placeholder-gray-500"
-      placeholder="Confirm Password"
-      formControlName="confirmPassword"
-    />
-    <div
-      class="text-red-500 text-sm mt-2"
-      *ngIf="hasDisplayableError('confirmPassword') && form.controls.confirmPassword.hasError('passwordMismatch')"
-    >
-      Passwords don't match.
-    </div>
-  </div> -->
+    <!-- Password Input -->
+    <app-input id="password" label="Password" type="password" [formControl]="getFormControl('password')">>
+    </app-input>
 
-  <!-- Submit Button -->
-  <!-- <div class="mt-4">
-    <button
-      type="submit"
-      class="w-full py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg"
-    >
-      Register
+    <!-- Confirm Password Input (only shown for Sign up) -->
+    <app-input *ngIf="variant === 'register'" id="confirmPassword" label="Confirm Password" type="password"
+      [formControl]="getFormControl('confirmPassword')">>
+    </app-input>
+
+    <!-- Submit Button -->
+    <button type="submit"
+      class="bg-[#3C4852] hover:border-2 text-white mt-4 w-full mx-auto rounded-md h-8 transition-all duration-200 group  text-sm font-bold">
+      {{ variant === 'login' ? 'Login' : 'Join for free' }}
     </button>
-  </div>
-</form> -->
+  </form>
 
-
-<!-- <form [formGroup]="form">
-    <div class="mb-3">
-        <input class="from-control bg-white" placeholder="Full Name" formControlName="fullName" type="text">
-    </div>
-    <div></div>
-    <div></div>
-</form> -->
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="flex flex-col w-[90%] mx-auto">
-    <div class="mb-4 text-2xl font-semibold text-green-600">Sign up</div>
-
-    <label for="name" class="my-2 w-[90%]">Name: </label>
-    <input id="name" type="text" formControlName="name" class="border rounded-md h-8 placeholder:pl-2 placeholder:text-sm w-[90%] mx-auto" placeholder="Enter your name" >
-    <label for="email" class="my-2">Email: </label>
-    <input id="email" type="text" formControlName="email" class="border rounded-md h-8 placeholder:pl-2 placeholder:text-sm w-[90%] mx-auto" placeholder="Enter your name">
-    <label for="password" class="my-2">Password: </label>
-    <input id="password" type="password" formControlName="password" class="border rounded-md h-8 placeholder:pl-2 placeholder:text-sm w-[90%] mx-auto" placeholder="Enter your name">
-</form>
-
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!profileForm.valid" class="bg-green-900">Submit</button>
-
-
-
+  <!-- Toggle Link -->
+  <p class="text-neutral-500 my-6 text-center">
+    {{ variant === 'login' ? 'First time using our service?' : 'Already have an account?' }}
+    <span (click)="toggleVariant()" class="text-[#3C4852] ml-1 hover:underline cursor-pointer">
+      {{ variant === 'login' ? 'Create an account' : 'Login' }}
+    </span>
+  </p>
+</div>

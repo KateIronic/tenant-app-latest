@@ -1,0 +1,31 @@
+<div class="relative" id="search">
+  <!-- Overlay -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden" id="overlay" (click)="closeDropdown()">
+  </div>
+
+  <!-- Search Bar -->
+  <div class="relative z-20">
+    <input type="text" placeholder="Type the goal / exam you're preparing for"
+      class="outline-none w-full pl-10 border-[1px] border-[#E9EEF2] rounded-md h-10 focus:ring-2 focus:ring-[#08BD80]"
+      (focus)="openDropdown()" id="searchBar" />
+    <span class="absolute inset-y-0 left-3 flex items-center text-[#7a8b94]">
+      <ng-icon name="ionSearch"></ng-icon>
+    </span>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="absolute w-full bg-white border border-[#E9EEF2] rounded-md mt-2 shadow-lg z-20 hidden" id="dropdown">
+    <ul>
+      <p class="text-[#7a8b94] text-sm font-normal m-2">Popular goals</p>
+      <li class="p-2 hover:bg-[#E9EEF2] cursor-pointer flex justify-between text-[#3C4852] m-4">IB <span
+          class="text-[#7a8b94]">
+          <ng-icon name="ionArrowForwardOutline"></ng-icon></span></li>
+      <li class="p-2 hover:bg-[#E9EEF2] cursor-pointer flex justify-between text-[#3C4852] m-4">Cambridge <span
+          class="text-[#7a8b94]">
+          <ng-icon name="ionArrowForwardOutline"></ng-icon></span></li>
+      <li class="p-2 hover:bg-[#E9EEF2] cursor-pointer flex justify-between text-[#3C4852] m-4">AP <span
+          class="text-[#7a8b94]">
+          <ng-icon name="ionArrowForwardOutline"></ng-icon></span></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div>
+  <h2 class="text-3xl font-bold text-[#3C4852] mb-2" id="goal">Select your goal / exam</h2>
+  <div class="text-base font-semibold text-[#3C4852] mb-5">
+    <span class="text-[#08BD80]">200+</span> exams available for your preparation
+  </div>
+  <app-searchbar></app-searchbar>
+
+  <h3 class="text-2xl font-bold text-[#3C4852] m-4">Popular goals</h3>
+  <div class="flex justify-around items-center mb-6">
+    <button *ngFor="let goal of goals"
+      class="bg-white text-[#3C4852] text-xs font-semibold px-5 py-3 rounded-md border-[1px] border-[#E9EEF2] min-w-24 w-[104px] h-[40px] flex justify-center items-center"
+      (click)="onGoalSelect(goal.name)" [class.bg-[#08BD80]]="selectedGoal === goal.name">
+      {{ goal.name }}
+    </button>
+  </div>
+
+  <!-- Display categories after a goal is selected -->
+  <div *ngIf="selectedGoal" class="mb-6 cursor-pointer">
+    <h3 class="text-2xl font-bold text-[#3C4852] m-4">Popular Categories</h3>
+    <div class="flex justify-around items-center">
+      <button *ngFor="let category of selectedGoalCategories"
+        class="bg-white text-[#3C4852] text-xs font-semibold px-5 py-3 rounded-md border-[1px] border-[#E9EEF2] min-w-24 w-[104px] h-[40px] flex justify-center items-center"
+        (click)="onCategorySelect(category.name)" [class.bg-green-200]="selectedCategory === category.name">
+        {{ category.name }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Display course cards based on selected category -->
+  <div *ngIf="selectedCategory" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <app-course-card *ngFor="let course of selectedCourses" [course]="course"></app-course-card>
+  </div>
+</div>
