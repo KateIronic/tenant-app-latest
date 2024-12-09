@@ -5,7 +5,7 @@ import { IntroComponent } from './components/intro/intro.component';
 
 @Component({
   selector: 'app-root',
-  imports: [UserComponent, IntroComponent],
+  imports: [IntroComponent],
   templateUrl: './app.component.html',
   styles: [],
 })

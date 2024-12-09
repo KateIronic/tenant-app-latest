@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { GoalComponent } from '../goal/goal.component';
-import { UserComponent } from "../../user/user.component";
 
 @Component({
   selector: 'app-nav',
-  imports: [GoalComponent, UserComponent],
+  imports: [],
   templateUrl: './nav.component.html',
   styles: ``
 })
